@@ -67,7 +67,7 @@ function checkInput() {
                     console.log(coordRot[index - 1][prevComponent].coordinates.x)
                     console.log('Prev: ', prevComponent)
                     if (prevComponent == 'center') {
-                        rootObj.coordinates.x = coordRot[index - 1][prevComponent].coordinates.x;
+                        rootObj.coordinates.x = coordRot[index - 1][prevComponent].coordinates.x + centerWidth;
                         rootObj.coordinates.z = coordRot[index - 1][prevComponent].coordinates.z;
                         rootObj.rotation.y = coordRot[index - 1][prevComponent].rotation.y;
                         coordObject[userInput] = rootObj;
