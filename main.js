@@ -1,4 +1,4 @@
-var finalArray = ["none", "none"];
+var finalArray = [{ none: "" }, { none: "" }];
 
 function checkInput() {
   var coordObject = {};
@@ -20,14 +20,27 @@ function checkInput() {
   if (finalArray.length == 2) {
     coordObject[input] = root;
     finalArray.splice(1, 0, coordObject);
-    console.log(coordObject);
   } else {
     coordObject[input] = root;
-
     finalArray.splice(index, 0, coordObject);
   }
-  for (let i = 1; i < finalArray.length - 1; i++) {}
-  console.log(finalArray);
+  var flag = "x";
+  for (let i = 1; i < finalArray.length - 1; i++) {
+    let prevComponent = Object.keys(finalArray[i - 1]);
+    if (prevComponent == "center") {
+      finalArray[i][input].coordinates[flag] =
+        finalArray[i - 1][input].coordinates[flag] + 0.7;
+    } else if (prevComponent == "right") {
+      if (flag == "x") {
+        flag = "z";
+      } else flag = "x";
+    } else if (prevComponent == "left") {
+      if (flag == "x") {
+        flag = "z";
+      } else flag = "x";
+    }
+  }
+  console.log("Final: ", finalArray);
 }
 
 window.onload = function () {
