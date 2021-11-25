@@ -28,20 +28,26 @@ function checkInput() {
   for (let i = 1; i < finalArray.length - 1; i++) {
     let prevComponent = Object.keys(finalArray[i - 1]);
     if (prevComponent == "center") {
-      finalArray[i][input].coord[flag] = finalArray[i - 1][prevComponent].coord[flag] + 0.7;
-        finalArray[i][input].rotation.y = finalArray[i-1][prevComponent].rotation.y
+      finalArray[i][input].coord[flag] =
+        finalArray[i - 1][prevComponent].coord[flag] + 0.7;
+      finalArray[i][input].rotation.y =
+        finalArray[i - 1][prevComponent].rotation.y;
     } else if (prevComponent == "right") {
       if (flag == "x") {
         flag = "z";
       } else flag = "x";
-      finalArray[i][input].coord[flag]=finalArray[i-1][prevComponent].coord[flag] - 0.9;
-      finalArray[i][input].rotation.y = finalArray[i-1][prevComponent].rotation.y -90;
+      finalArray[i][input].coord[flag] =
+        finalArray[i - 1][prevComponent].coord[flag] - 0.9;
+      finalArray[i][input].rotation.y =
+        finalArray[i - 1][prevComponent].rotation.y - 90;
     } else if (prevComponent == "left") {
       if (flag == "x") {
         flag = "z";
       } else flag = "x";
-      finalArray[i][input].coord[flag]=finalArray[i-1][prevComponent].coord[flag] - 0.9;
-      finalArray[i][input].rotation.y = finalArray[i-1][prevComponent].rotation.y + 90;
+      finalArray[i][input].coord[flag] =
+        finalArray[i - 1][prevComponent].coord[flag] - 0.9;
+      finalArray[i][input].rotation.y =
+        finalArray[i - 1][prevComponent].rotation.y + 90;
     }
   }
   console.log("Final: ", finalArray);
