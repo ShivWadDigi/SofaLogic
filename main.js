@@ -27,8 +27,11 @@ function checkInput() {
   var flag = "x";
 
   for (let i = 1; i < finalArray.length; i++) {
+    //Taking Previous component and next component
     let prevComponent = Object.keys(finalArray[i - 1])[0];
     let nextComponent = Object.keys(finalArray[i])[0];
+
+    //calculating component coordinates and rotation
     if (prevComponent == "center") {
       finalArray[i][nextComponent].coord[flag] =
         finalArray[i - 1][prevComponent].coord[flag] + 0.7;
