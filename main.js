@@ -25,7 +25,7 @@ function checkInput() {
     finalArray.splice(index, 0, coordObject);
   }
   var flag = "x";
-  var leftFlag = 1
+  var leftFlag = 1;
   var rightFlag = 1;
   for (let i = 1; i < finalArray.length; i++) {
     //Taking Previous component and next component
@@ -67,7 +67,7 @@ function checkInput() {
           finalArray[i][nextComponent].rotation.y =
             finalArray[i - 1][prevComponent].rotation.y - 90;
           finalArray[i][nextComponent].coord['x'] =
-            finalArray[i - 1][prevComponent].coord['x'] + 0.8;
+            finalArray[i - 1][prevComponent].coord['x'] - 0.8;
         }
       }
       else if (rightFlag > 2) {
