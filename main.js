@@ -19,7 +19,7 @@ function checkInput() {
   index = parseInt(index);
   if (finalArray.length == 0) {
     coordObject[input] = root;
-    finalArray.splice(1, 0, coordObject);
+    finalArray.splice(0, 0, coordObject);
   } else {
     coordObject[input] = root;
     finalArray.splice(index, 0, coordObject);
@@ -33,27 +33,51 @@ function checkInput() {
 
     //calculating component coordinates and rotation
     if (prevComponent == "center") {
-      finalArray[i][nextComponent].coord[flag] =
-        finalArray[i - 1][prevComponent].coord[flag] + 0.7;
-      finalArray[i][nextComponent].rotation.y =
-        finalArray[i - 1][prevComponent].rotation.y;
+      if (flag == 'x') {
+        finalArray[i][nextComponent].coord['x'] =
+          finalArray[i - 1][prevComponent].coord['x'] + 0.8;
+        finalArray[i][nextComponent].rotation.y =
+          finalArray[i - 1][prevComponent].rotation.y;
+        finalArray[i][nextComponent].coord['z'] = finalArray[i][prevComponent].coord['z'];
+      }
+      else {
+        flag = 'z'
+        finalArray[i][nextComponent].coord['z'] = finalArray[i - 1][prevComponent].coord['z'] + 0.8;
+        finalArray[i][nextComponent].rotation.y = finalArray[i - 1][prevComponent].rotation.y;
+        finalArray[i][nextComponent].coord['x'] = finalArray[i][prevComponent].coord['x'];
+
+      }
+
     } else if (prevComponent == "right") {
       if (flag == "x") {
         flag = "z";
+        finalArray[i][nextComponent].coord['x'] =
+          finalArray[i - 1][prevComponent].coord['x'];
+        finalArray[i][nextComponent].rotation.y =
+          finalArray[i - 1][prevComponent].rotation.y - 90;
       } else flag = "x";
-      console.log(finalArray[i][nextComponent].coord)
-      finalArray[i][nextComponent].coord[flag] =
-        finalArray[i - 1][prevComponent].coord[flag] - 0.9;
+      finalArray[i][nextComponent].coord['z'] =
+        finalArray[i - 1][prevComponent].coord['z'];
       finalArray[i][nextComponent].rotation.y =
         finalArray[i - 1][prevComponent].rotation.y - 90;
     } else if (prevComponent == "left") {
       if (flag == "x") {
         flag = "z";
-      } else flag = "x";
-      finalArray[i][nextComponent].coord[flag] =
-        finalArray[i - 1][prevComponent].coord[flag] - 0.9;
-      finalArray[i][nextComponent].rotation.y =
-        finalArray[i - 1][prevComponent].rotation.y + 90;
+        finalArray[i][nextComponent].coord['x'] =
+          finalArray[i - 1][prevComponent].coord['x'];
+        finalArray[i][nextComponent].coord['z'] = finalArray[i - 1][prevComponent].coord['z'] + 0.8;
+        finalArray[i][nextComponent].rotation.y =
+          finalArray[i - 1][prevComponent].rotation.y + 90;
+
+      } else {
+        flag = "x";
+        finalArray[i][nextComponent].coord['z'] =
+          finalArray[i - 1][prevComponent].coord['z'];
+        finalArray[i][nextComponent].coord['x'] = finalArray[i - 1][prevComponent].coord['x'] + 0.8;
+        finalArray[i][nextComponent].rotation.y =
+          finalArray[i - 1][prevComponent].rotation.y + 90;
+      }
+
     }
   }
   console.log("Final: ", finalArray);
