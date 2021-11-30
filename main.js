@@ -54,7 +54,7 @@ function checkInput() {
         rightFlag += 1;
         if (flag == "x") {
           flag = "z";
-          finalArray[i][nextComponent].coord['x'] =
+          finalArray[i][nextComponent].coord['x'] = 
             finalArray[i - 1][prevComponent].coord['x'];
           finalArray[i][nextComponent].rotation.y =
             finalArray[i - 1][prevComponent].rotation.y - 90;
